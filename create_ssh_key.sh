@@ -20,13 +20,13 @@ key_file=${key_file:-$default_file} # Sets default if empty
 echo "Key $key_file"
 
 echo "Generating ssh key with provided email"
-# ssh-keygen -t $ALGORITHM -C $email -f $key_file
+ssh-keygen -t $ALGORITHM -C $email -f $key_file
 echo "Done"
 
 # Adds key to ssh-agent keyring
 echo "Starting ssh-agent (for keyring)"
-# eval "(ssh-agent -s)"
-# ssh-add $key_file
+eval "(ssh-agent -s)"
+ssh-add $key_file
 
 # Outputs public key to be copied
 echo
